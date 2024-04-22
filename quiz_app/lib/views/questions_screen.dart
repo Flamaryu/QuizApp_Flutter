@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'answer_button.dart';
-import 'package:quiz_app/data/questions.dart';
+import 'package:quiz_app/models/quiz_question.dart';
+import '../answer_button.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class QuestionScreen extends StatefulWidget {
-  const QuestionScreen({super.key, required this.onSelectAnswer});
+  const QuestionScreen(
+      {super.key, required this.onSelectAnswer, required this.questionsC});
+
+  final List<QuizQuestion> questionsC;
 
   final void Function(String answer) onSelectAnswer;
   @override
@@ -25,8 +28,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
 
   @override
   Widget build(context) {
-    final currentQuestion = questions[currentQuestionIndex];
-
+    final currentQuestion = widget.questionsC[currentQuestionIndex];
     return SizedBox(
       width: double.infinity,
       child: Container(

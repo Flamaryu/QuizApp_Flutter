@@ -41,7 +41,7 @@ class SummarryItem extends StatelessWidget {
                 Text(
                   itemData['user_answer'] as String,
                   style:
-                      const TextStyle(color: Color.fromARGB(255, 232, 89, 137)),
+                      const TextStyle(color: Color.fromARGB(255, 237, 49, 46)),
                 ),
                 Text(
                   itemData['correct_answer'] as String,
