@@ -1,5 +1,5 @@
 # QuizApp_Flutter
-trivia app built in flutter 
+A triva app built in flutter framework
 
 things I learned with this app:
 * Integrate google admobs
