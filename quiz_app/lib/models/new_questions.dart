@@ -3,7 +3,7 @@
 //     final questions = questionsFromJson(jsonString);
 
 import 'dart:convert';
-import 'package:html_unescape/html_unescape_small.dart';
+import 'package:html_unescape/html_unescape.dart';
 import 'package:quiz_app/models/quiz_question.dart';
 
 NewQuestions questionsFromJson(String str) =>
@@ -27,12 +27,12 @@ class NewQuestions {
       var formattedQuestion = unescape.convert(question);
       var correctAnswer = results[v].correctAnswer;
       var wrongAnswers = results[v].incorrectAnswers;
-      for (int i = 0; i < wrongAnswers.length; i++) {
-        wrongAnswers[i] = unescape.convert(wrongAnswers[i]);
-      }
       List<String> answers = [];
       answers.add(correctAnswer);
       answers.addAll(wrongAnswers);
+      for (int i = 0; i < answers.length; i++) {
+        answers[i] = unescape.convert(answers[i]);
+      }
       questions.add(QuizQuestion(formattedQuestion, answers));
     }
     return questions;

@@ -2,7 +2,7 @@
     <application
         android:label="So you know somethings"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -32,6 +32,8 @@
          <meta-data
         android:name="com.google.android.gms.ads.APPLICATION_ID"
         android:value="ca-app-pub-1126514114907751~5842462341"/>
+       
 
     </application>
+     
 </manifest>

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 const Map<String, String> cList = {
   'General knowledge': '&category=9',
@@ -124,32 +125,37 @@ class _StartScreenState extends State<StartScreen> {
             height: 10,
           ),
           OutlinedButton.icon(
-            onPressed: () {
-              if (mode != null && catergory != null) {
-                isQuisStart = true;
-                widget.startQuiz();
+            onPressed: () async {
+              bool result = await InternetConnectionChecker().hasConnection;
+              if (result == true) {
+                if (mode != null && catergory != null) {
+                  isQuisStart = true;
+                  widget.startQuiz();
+                } else {
+                  _showToast(context,
+                      " Need to pick a category/Difficulty to start game");
+                }
               } else {
-                _showToast(context);
+                _showToast(context, "Need internet to load questions");
               }
             },
             icon: const Icon(Icons.arrow_right),
             style: OutlinedButton.styleFrom(foregroundColor: Colors.white),
-            label: const Text('Start Quiz'),
+            label: const Text('Start, Quiz'),
           )
         ],
       ),
     );
   }
 
-  void _showToast(BuildContext context) {
+  void _showToast(BuildContext context, String message) {
     final scaffold = ScaffoldMessenger.of(context);
     scaffold.showSnackBar(
-      const SnackBar(
+      SnackBar(
         behavior: SnackBarBehavior.floating,
         duration: Duration(milliseconds: 1500),
         dismissDirection: DismissDirection.endToStart,
-        content:
-            Text('Need to select a category and a difficulty to start game'),
+        content: Text(message),
       ),
     );
   }

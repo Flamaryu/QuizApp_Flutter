@@ -5,7 +5,9 @@ import 'package:quiz_app/quiz.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+   SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
   MobileAds.instance.initialize();
   runApp(const Quiz());
 }
